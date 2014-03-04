@@ -1,6 +1,6 @@
 <h1>预订</h1>
 
-<%= form_for(@order) do |f| %>
+<%= form_for @order, url: { action: "place", product: @product } do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -30,6 +30,6 @@
     <%= f.text_field :count %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '提交' %>
   </div>
 <% end %>

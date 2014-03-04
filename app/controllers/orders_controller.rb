@@ -63,17 +63,16 @@ class OrdersController < ApplicationController
 
   def prepare
     @order = Order.new
-    @product = Product.find_by_id(params[:product])
+    @product = Product.find(params[:product])
   end
   
   def place
-    params.require(:order).permit(:customer_name, :customer_address, :customer_mobile, :count)
-    @order = Order.new(params[:order])
-    @order.product = @product
+    @order = Order.new(params.require(:order).permit(:customer_name, :customer_address, :customer_mobile, :count))
+    @order.product_id = params.require(:product)
     if @order.save
-      format.html { redirect_to @order, notice: 'OK' }
+      redirect_to @order, notice: 'OK'
     else
-      format.html { render action: 'new' }
+      render action: 'new'
     end
   end
 
