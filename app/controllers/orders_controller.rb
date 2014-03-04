@@ -71,7 +71,7 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @order.product = @product
     if @order.save
-      format.html { redirect_to @order, notice: '让饭飞一会，就来' }
+      format.html { redirect_to @order, notice: 'OK' }
     else
       format.html { render action: 'new' }
     end
