@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer name:</strong>
+  <%= @order.customer_name %>
+</p>
+
+<p>
+  <strong>Customer address:</strong>
+  <%= @order.customer_address %>
+</p>
+
+<p>
+  <strong>Customer mobile:</strong>
+  <%= @order.customer_mobile %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @order.product %>
+</p>
+
+<p>
+  <strong>Delivery man:</strong>
+  <%= @order.delivery_man %>
+</p>
+
+<p>
+  <strong>Is complete:</strong>
+  <%= @order.is_complete %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @order.note %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
