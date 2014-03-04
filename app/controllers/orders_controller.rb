@@ -61,6 +61,22 @@ class OrdersController < ApplicationController
     end
   end
 
+  def prepare
+    @order = Order.new
+    @product = Product.find_by_id(params[:product])
+  end
+  
+  def place
+    params.require(:order).permit(:customer_name, :customer_address, :customer_mobile, :count)
+    @order = Order.new(params[:order])
+    @order.product = @product
+    if @order.save
+      format.html { redirect_to @order, notice: '让饭飞一会，就来' }
+    else
+      format.html { render action: 'new' }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -69,6 +85,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer_name, :customer_address, :customer_mobile, :product_id, :delivery_man, :is_complete, :note)
+      params.require(:order).permit(:customer_name, :customer_address, :customer_mobile, :product_id, :count, :delivery_man, :is_complete, :note)
     end
 end

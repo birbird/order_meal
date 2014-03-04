@@ -13,9 +13,8 @@
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @product.price %>
+  <strong>价格：</strong>
+  <%= @product.price %>元
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= button_to '预订', orders_prepare_path(:product => @product), :method => :post %>

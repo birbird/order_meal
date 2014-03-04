@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Picture</th>
       <th>Description</th>
       <th>Price</th>
       <th></th>
@@ -17,7 +16,6 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.picture %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
         <td><%= link_to 'Show', product %></td>

@@ -3,6 +3,8 @@ OrderMeal::Application.routes.draw do
 
   resources :products
 
+  post 'orders/prepare' => 'orders#prepare'
+  post 'orders/place' => 'orders#place'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
