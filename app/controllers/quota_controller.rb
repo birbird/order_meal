@@ -4,7 +4,7 @@ class QuotaController < ApplicationController
   # GET /quota
   # GET /quota.json
   def index
-    @quota = Quotum.all
+    @quota = Quotum.all.order(_date: :desc)
   end
 
   # GET /quota/1
@@ -42,7 +42,7 @@ class QuotaController < ApplicationController
   def update
     respond_to do |format|
       if @quotum.update(quotum_params)
-        format.html { redirect_to @quotum, notice: 'Quotum was successfully updated.' }
+        format.html { redirect_to quota_url, notice: 'Quotum was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
