@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304155622) do
+ActiveRecord::Schema.define(version: 20140309092537) do
 
   create_table "orders", force: true do |t|
     t.string   "customer_name"
@@ -36,5 +36,15 @@ ActiveRecord::Schema.define(version: 20140304155622) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "quota", force: true do |t|
+    t.date     "_date"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quota", ["product_id"], name: "index_quota_on_product_id"
 
 end

@@ -1,4 +1,6 @@
 OrderMeal::Application.routes.draw do
+  resources :quota
+
   resources :orders
 
   resources :products

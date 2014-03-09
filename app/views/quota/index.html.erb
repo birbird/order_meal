@@ -1,0 +1,31 @@
+<h1>Listing quota</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> date</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quota.each do |quotum| %>
+      <tr>
+        <td><%= quotum._date %></td>
+        <td><%= quotum.product && quotum.product.name %></td>
+        <td><%= quotum.quantity %></td>
+        <td><%= link_to 'Show', quotum %></td>
+        <td><%= link_to 'Edit', edit_quotum_path(quotum) %></td>
+        <td><%= link_to 'Destroy', quotum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Quotum', new_quotum_path %>
