@@ -1,3 +1,4 @@
+# encoding: utf-8
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
@@ -70,7 +71,7 @@ class OrdersController < ApplicationController
     @order = Order.new(params.require(:order).permit(:customer_name, :customer_address, :customer_mobile, :count))
     @order.product_id = params.require(:product)
     if @order.save
-      redirect_to @order, notice: 'OK'
+      redirect_to @order, notice: '预订成功'
     else
       render action: 'new'
     end
