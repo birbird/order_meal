@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @order._date = DateTime.now.to_date
 
     respond_to do |format|
       if @order.save
@@ -73,6 +74,7 @@ class OrdersController < ApplicationController
     cookies[:customer_address] = params[:order][:customer_address]
     cookies[:customer_mobile] = params[:order][:customer_mobile]
     @order.product_id = params.require(:product)
+    @order._date = DateTime.now.to_date
     if @order.save
       redirect_to @order, notice: '预订成功'
     else
