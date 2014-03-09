@@ -5,6 +5,18 @@
 </p>
 
 <p>
+  <%= @product.price %>元/份
+  <br>
+  <% if @product.today_quantity %>
+ 	剩余<%= @product.today_quantity %>份
+  <% else %>
+        今日已售罄
+  <% end %>
+</p>
+
+<%= button_to '预订', orders_prepare_path(:product => @product), :method => :post, :style => 'width: 80px;' %>
+
+<p>
   <%= @product.description %>
 </p>
 
@@ -12,9 +24,3 @@
   <img src="<%= @product.picture %>"/>
 </p>
 
-<p>
-  <strong>价格：</strong>
-  <%= @product.price %>元
-</p>
-
-<%= button_to '预订', orders_prepare_path(:product => @product), :method => :post %>
