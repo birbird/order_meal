@@ -9,12 +9,12 @@
   <br>
   <% if @product.today_quantity %>
  	剩余<%= @product.today_quantity %>份
+	<%= button_to '预订', orders_prepare_path(:product => @product), :method => :post, :style => 'width: 80px;' %>
   <% else %>
-        今日已售罄
+         今日已售罄
   <% end %>
 </p>
 
-<%= button_to '预订', orders_prepare_path(:product => @product), :method => :post, :style => 'width: 80px;' %>
 
 <p>
   <%= @product.description %>
