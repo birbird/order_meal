@@ -70,9 +70,9 @@ class OrdersController < ApplicationController
   
   def place
     @order = Order.new(params.require(:order).permit(:customer_name, :customer_address, :customer_mobile, :count))
-    cookies[:customer_name] = params[:order][:customer_name]
-    cookies[:customer_address] = params[:order][:customer_address]
-    cookies[:customer_mobile] = params[:order][:customer_mobile]
+    cookies.permanent[:customer_name] = params[:order][:customer_name]
+    cookies.permanent[:customer_address] = params[:order][:customer_address]
+    cookies.permanent[:customer_mobile] = params[:order][:customer_mobile]
     @order.product_id = params.require(:product)
     @order._date = DateTime.now.to_date
     if @order.save
