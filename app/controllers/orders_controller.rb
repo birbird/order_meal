@@ -63,12 +63,15 @@ class OrdersController < ApplicationController
   end
 
   def prepare
-    @order = Order.new
+    @order = Order.new(customer_name: cookies[:customer_name], customer_address: cookies[:customer_address], customer_mobile: cookies[:customer_mobile])
     @product = Product.find(params[:product])
   end
   
   def place
     @order = Order.new(params.require(:order).permit(:customer_name, :customer_address, :customer_mobile, :count))
+    cookies[:customer_name] = params[:order][:customer_name]
+    cookies[:customer_address] = params[:order][:customer_address]
+    cookies[:customer_mobile] = params[:order][:customer_mobile]
     @order.product_id = params.require(:product)
     if @order.save
       redirect_to @order, notice: '预订成功'
