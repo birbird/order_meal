@@ -1,44 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Customer name:</strong>
+  <strong>预订人:</strong>
   <%= @order.customer_name %>
 </p>
 
 <p>
-  <strong>Customer address:</strong>
+  <strong>地址:</strong>
   <%= @order.customer_address %>
 </p>
 
 <p>
-  <strong>Customer mobile:</strong>
+  <strong>联系电话:</strong>
   <%= @order.customer_mobile %>
 </p>
 
 <p>
-  <strong>Product:</strong>
-  <%= @order.product %>
+  <strong>预订产品:</strong>
+  <%= @order.product.name %>
 </p>
 
 <p>
-  <strong>Count:</strong>
+  <strong>份数:</strong>
   <%= @order.count %>
 </p>
-
-<p>
-  <strong>Delivery man:</strong>
-  <%= @order.delivery_man %>
-</p>
-
-<p>
-  <strong>Is complete:</strong>
-  <%= @order.is_complete %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @order.note %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
