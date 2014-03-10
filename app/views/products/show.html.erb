@@ -6,7 +6,11 @@
   <%= @product.price %>元/份
   <br>
   <% if @product.today_quantity %>
- 	剩余<%= @product.today_quantity %>份
+  	<% if @product.today_quantity > 10 %>
+	  供应充足
+    <% else %>
+ 	  剩余<%= @product.today_quantity %>份  
+	<% end %>
 	<%= button_to '预订', orders_prepare_path(:product => @product), :method => :post, :style => 'width: 80px;' %>
   <% else %>
          今日已售罄
