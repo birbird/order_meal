@@ -10,7 +10,7 @@
 
 <p>
   <%= @product.price %>元/份
-  <%= link_to "优惠说明", "tips/优惠/优惠.html" %>
+  <%= link_to "优惠说明", "../tips/优惠/优惠.html" %>
   <br>
   <% if @product.today_quantity %>
   	<% if @product.today_quantity > 10 %>
