@@ -1,6 +1,10 @@
 <% content_for :title, @product.name %>
 
 <p>
+  <img src="<%= @product.picture %>"/>
+</p>
+
+<p>
   <strong><%= @product.name %></strong>
 </p>
 
@@ -15,16 +19,11 @@
 	<% end %>
 	<%= button_to '预订', orders_prepare_path(:product => @product), :method => :post, :style => 'width: 80px;' %>
   <% else %>
-         今日已售罄
+  	今日已售罄
   <% end %>
 </p>
 
-
 <p>
   <%= @product.description %>
-</p>
-
-<p>
-  <img src="<%= @product.picture %>"/>
 </p>
 
