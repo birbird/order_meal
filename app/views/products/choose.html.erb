@@ -1,0 +1,21 @@
+<h1>菜品选择</h1>
+
+<p>任选三样，总共只要 18 元</p>
+
+<%= form_tag orders_prepare_path do %>
+	<table>
+	<% for product in @products %>
+	  <tr>
+	  	<% if product.today_quantity %>
+	  	  <td><%= check_box_tag "product_ids[]", product.id %></td>
+	      <td><%=h product.name %></td>
+	  	<% else %>
+  	      <td><%= check_box_tag "product_ids[]", product.id, false, disabled: true %></td>
+	      <td><%=h product.name %>（已售罄）</td>
+  		<% end %>
+	    <td><%= link_to ">>", product %></td>
+	  </tr>
+	<% end %>
+	</table>
+<%= submit_tag "预订", :style => 'width: 80px;' %>
+<% end %>
