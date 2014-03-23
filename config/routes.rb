@@ -1,9 +1,9 @@
 OrderMeal::Application.routes.draw do
   resources :quota
 
-  get 'orders/choose' => 'orders#choose'
   resources :orders
 
+  get 'products/choose' => 'products#choose'
   resources :products
 
   post 'orders/prepare' => 'orders#prepare'
