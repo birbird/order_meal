@@ -65,7 +65,12 @@ class OrdersController < ApplicationController
 
   def prepare
     @order = Order.new(customer_name: cookies[:customer_name], customer_address: cookies[:customer_address], customer_mobile: cookies[:customer_mobile])
-    @product = Product.find(params[:product])
+    if params[:product]
+      @product = Product.find(params[:product])
+    end
+    if params[:product_ids]
+      @product_ids = params[:product_ids]
+    end
   end
   
   def place
@@ -73,7 +78,7 @@ class OrdersController < ApplicationController
     cookies.permanent[:customer_name] = params[:order][:customer_name]
     cookies.permanent[:customer_address] = params[:order][:customer_address]
     cookies.permanent[:customer_mobile] = params[:order][:customer_mobile]
-    @order.product_id = params.require(:product)
+    @order.product_ids = params.require(:product_ids)
     @order._date = DateTime.now.to_date
     if @order.save
       redirect_to @order, notice: '预订成功'
