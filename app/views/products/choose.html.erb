@@ -11,7 +11,7 @@
 	      <td><%=h product.name %></td>
 	  	<% else %>
   	      <td><%= check_box_tag "product_ids[]", product.id, false, disabled: true %></td>
-	      <td><%=h product.name %>（已售罄）</td>
+	      <td><%=h product.name %>（已售罄）<br> <img src="花菜.jpg"/> </td>
   		<% end %>
 	    <td><%= link_to ">>", product %></td>
 	  </tr>
