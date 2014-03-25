@@ -8,7 +8,7 @@
 	  <tr>
 	  	<% if product.today_quantity %>
 	  	  <td><%= check_box_tag "product_ids[]", product.id %></td>
-	      <td><%=h product.name %> <br> <img src="<%= @product.picture %>"/> </td>
+	      <td><%=h product.name %> <br> <img src="<%= product.picture %>"/> </td>
 	  	<% else %>
   	      <td><%= check_box_tag "product_ids[]", product.id, false, disabled: true %></td>
 	      <td><%=h product.name %>（已售罄）<br> <img src="<%= @product.picture %>"/> </td>
